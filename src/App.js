@@ -1,11 +1,9 @@
 import AppRouter from './app-router/AppRouter';
 import './App.css';
-import Deneme from './components/Deneme';
-import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className="App font-ffKanit ">
+    <div className="App h-screen font-ffKanit ">
       <AppRouter />
       {/* <Deneme /> */}
     </div>

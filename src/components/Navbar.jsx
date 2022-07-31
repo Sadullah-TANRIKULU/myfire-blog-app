@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
 import claruswayIcon from "../assets/cw.jpeg";
-import Dashboard from "../pages/Dashboard";
 
 const Navbar = () => {
   return (
-    <div className="navbar flex justify-between">
-      <Link to={Dashboard}>
+    <div className="navbar bg-primary flex justify-between">
+      <Link to="/">
         <div className="w-10 rounded-full">
           <img src={claruswayIcon} alt="clarusway" />
         </div>
       </Link>
-      <Link to={Dashboard}>
+      <Link to="/">
         <h1 className="h-full text-center text-2xl tracking-tighter cursor-pointer ">
           &lt;David Moses<span className="text-green-600">Blog/&gt;</span>
         </h1>
@@ -28,15 +27,23 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <button>Profile</button>
+              <Link to="profile">
+                <button>Profile</button>
+              </Link>
             </li>
             <li>
-              <button className="justify-between">
-                Blog <span className="badge">New</span>
-              </button>
+              <Link to="newblog">
+                {" "}
+                <button className="flex justify-between w-40">
+                  Blog <span className="badge">New</span>
+                </button>
+              </Link>
             </li>
             <li>
-              <button>Logout</button>
+              <Link to="login">
+                {" "}
+                <button>Logout</button>
+              </Link>
             </li>
           </ul>
         </div>

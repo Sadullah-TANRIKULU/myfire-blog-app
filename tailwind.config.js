@@ -5,10 +5,10 @@ module.exports = {
     extend: {
       fontFamily: {
         ffKanit:['Kanit', 'monospace']
-      }
+      },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require('@tailwindcss/typography'),],
   daisyui: {
     themes: ["acid",],
   },

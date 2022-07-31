@@ -1,7 +1,9 @@
+import BlogCard from "../components/BlogCard";
+
 const Dashboard = () => {
     return ( 
-        <div className="dashboard">
-            you will see first this dashboard, if you click clarusway symbol or blogger name on the navbar, you will see this page
+        <div className="dashboard m-4 h-full border-2 border-teal-600">
+            <BlogCard />
         </div>
      );
 }
