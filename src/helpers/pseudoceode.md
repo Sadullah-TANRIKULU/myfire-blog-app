@@ -16,4 +16,5 @@
 * useContext global state den veri çekmek için
 * DOM elementlerini yakalamak için eventler kullanılabilir : onChange, onClick, onSubmit vs...form yapısı avantajlı
 * path = '/' element={Dashboard}
+* başa dön, sona git eklenebilir
 * styling is up to individuals
