@@ -3,7 +3,7 @@ import claruswayIcon from "../assets/cw.jpeg";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-primary flex justify-between">
+    <div className="navbar bg-secondary flex justify-between">
       <Link to="/">
         <div className="w-10 rounded-full">
           <img src={claruswayIcon} alt="clarusway" />

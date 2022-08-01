@@ -10,23 +10,23 @@ import Register from "../pages/Register";
 import UpdateBlog from "../pages/UpdateBlog";
 
 const AppRouter = () => {
-    return ( 
-        <div className="appRouter">
-            <BrowserRouter>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="details" element={<Details/>} />
-                <Route path="login" element={<Login />} />
-                <Route path="register" element={<Register />} />
-                <Route path="updateblog" element={<UpdateBlog />} />
-                <Route path="profile" element={<Profile />} />
-                <Route path="newblog" element={<NewBlog />} />
-                <Route path="about" element={<About />} />
-            </Routes>
-            </BrowserRouter>
-        </div>
-     );
-}
- 
+  return (
+    <div className="appRouter">
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="details" element={<Details />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="updateblog" element={<UpdateBlog />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="newblog" element={<NewBlog />} />
+          <Route path="about" element={<About />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+};
+
 export default AppRouter;

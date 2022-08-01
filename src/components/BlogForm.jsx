@@ -13,7 +13,7 @@ const BlogForm = () => {
       </figure>
       <div className="card-body w-11/12">
         <h2 className="card-title">Shoes!</h2>
-        <p>if you click BLOG FORM, you will see the details page</p>
+        <p>if you click BLOG FORM, you will see the DETAILS page</p>
         <div className="card-actions justify-end">
           <button className="btn btn-primary">Buy Now</button>
         </div>
