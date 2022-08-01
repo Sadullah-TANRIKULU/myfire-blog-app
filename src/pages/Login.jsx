@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import google from "../assets/google.png";
 import { AuthContext } from "../contexts/AuthContext";
-import { signIn, signUpProvider } from "../helpers/firebase";
+import { forgotPassword, signIn, signUpProvider } from "../helpers/firebase";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,17 +13,16 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     // console.log(email, password);
-    signIn(email, password);
-    navigate("/");
+    signIn(email, password, navigate);
   };
 
   const withGoogleSignUp = () => {
     signUpProvider(navigate);
-  }
+  };
 
   return (
     <div className="login bg-[url('https://picsum.photos/1600/900')] bg-cover h-screen ">
-      <div className="hero min-h-screen" >
+      <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
@@ -35,7 +34,7 @@ const Login = () => {
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="card-body">
-              <form onSubmit={handleLogin} >
+              <form onSubmit={handleLogin}>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
@@ -60,13 +59,18 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <label className="label">
-                    <button className="label-text-alt link link-hover">
+                    <span
+                      className="label-text-alt link link-hover"
+                      onClick={() => forgotPassword(email)}
+                    >
                       Forgot password?
-                    </button>
+                    </span>
                   </label>
                 </div>
                 <div className="form-control mt-6">
-                  <button type="submit" className="btn btn-primary">Login</button>
+                  <button type="submit" className="btn btn-primary">
+                    Login
+                  </button>
                 </div>
               </form>
               <div className="form-control mt-6">

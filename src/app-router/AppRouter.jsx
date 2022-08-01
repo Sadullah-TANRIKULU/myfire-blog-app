@@ -12,7 +12,6 @@ import UpdateBlog from "../pages/UpdateBlog";
 const AppRouter = () => {
   return (
     <div className="appRouter">
-      <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<Dashboard />} />
@@ -24,7 +23,6 @@ const AppRouter = () => {
           <Route path="newblog" element={<NewBlog />} />
           <Route path="about" element={<About />} />
         </Routes>
-      </BrowserRouter>
     </div>
   );
 };
