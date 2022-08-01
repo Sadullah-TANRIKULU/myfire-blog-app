@@ -13,10 +13,10 @@ const Profile = () => {
           </div>
         </div> */}
         <div className="displayName w-full ">
-          <input className="input text-center w-11/12 " type="text" value={"blogger name here"} />
+          <input className="input text-center w-11/12 " type="text" defaultValue={"blogger name here"} />
         </div>
         <div className="displayEmail w-full ">
-          <input className="input text-center w-11/12 " type="email" value={"blogger email here"} />
+          <input className="input text-center w-11/12 " type="email" defaultValue={"blogger email here"} />
         </div>
         <div className="moreabout textarea w-11/12 ">
 

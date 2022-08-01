@@ -14,20 +14,20 @@ const NewBlog = () => {
               <input
                 className="input text-center w-3/4"
                 type="text"
-                value={"blog title here"}
+                defaultValue={"blog title here"}
               />
             </div>
             <div className="displayEmail w-full ">
               <input
                 className="input w-3/4"
                 type="text"
-                value={"pictureUrlHere"}
+                defaultValue={"pictureUrlHere"}
               />
             </div>
             <textarea
               className="prose prose-stone md:prose-base lg:prose-xl textarea m-4 lg:resize "
               name="textarea"
-              // value={"blogger background here"}
+              defaultValue={"blogger background here"}
             ></textarea>
           </div>
         </div>

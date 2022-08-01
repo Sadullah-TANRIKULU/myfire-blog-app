@@ -1,7 +1,19 @@
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import claruswayIcon from "../assets/cw.jpeg";
+import { AuthContext } from "../contexts/AuthContext";
+import { logOut } from "../helpers/firebase";
 
 const Navbar = () => {
+  // const [isCurrentUser, setIsCurrentUser] = useState(false);
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logOut();
+    navigate("/login");
+  };
+
   return (
     <div className="navbar bg-secondary flex justify-between">
       <Link to="/">
@@ -14,68 +26,64 @@ const Navbar = () => {
           &lt;David Moses<span className="text-green-600">Blog/&gt;</span>
         </h1>
       </Link>
-      {/* if isLoggedIn true Profile, New Blog and Logout, else Login and Register */}
-      {/* <div className="flex-none">
-        <div className="dropdown dropdown-end">
-          <label tabindex="0" className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/80/80/people" alt="profile" />
-            </div>
-          </label>
-          <ul
-            tabindex="0"
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <Link to="profile">
-                <button>Profile</button>
-              </Link>
-            </li>
-            <li>
-              <Link to="newblog">
-                {" "}
-                <button className="flex justify-between w-40">
-                  Blog <span className="badge">New</span>
-                </button>
-              </Link>
-            </li>
-            <li>
-              <Link to="login">
-                {" "}
-                <button>Logout</button>
-              </Link>
-            </li>
-          </ul>
+      {currentUser ? (
+        <div className="flex-none">
+          <span>{currentUser.email}</span>
+          <div className="dropdown dropdown-end">
+            <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src="https://placeimg.com/80/80/people" alt="profile" />
+              </div>
+            </label>
+            <ul
+              tabIndex="0"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <Link to="profile">
+                  <button>Profile</button>
+                </Link>
+              </li>
+              <li>
+                <Link to="newblog">
+                  {" "}
+                  <button className="flex justify-between w-40">
+                    Blog <span className="badge">New</span>
+                  </button>
+                </Link>
+              </li>
+              <li>
+                <button onClick={handleLogout}>Logout</button>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div> */}
-      <div className="flex-none">
-        <div className="dropdown dropdown-end">
-          <label tabindex="0" className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/80/80/people" alt="profile" />
-            </div>
-          </label>
-          <ul
-            tabindex="0"
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <Link to="login">
-                <button>Login</button>
-              </Link>
-            </li>
-            <li>
-              <Link to="register">
-                <button>Register</button>
-              </Link>
-            </li>
-          </ul>
+      ) : (
+        <div className="flex-none">
+          <div className="dropdown dropdown-end">
+            <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src="https://placeimg.com/80/80/people" alt="profile" />
+              </div>
+            </label>
+            <ul
+              tabIndex="0"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <Link to="login">
+                  <button>Login</button>
+                </Link>
+              </li>
+              <li>
+                <Link to="register">
+                  <button>Register</button>
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-      {/* navbar should be on the top,
-        click user icon to see a dropdown menu,
-        if you logged in: profile, new blog and logout options,
-        if you didn't log in: login and register options */}
+      )}
     </div>
   );
 };
