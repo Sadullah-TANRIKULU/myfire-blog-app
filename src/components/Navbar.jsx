@@ -15,7 +15,7 @@ const Navbar = () => {
         </h1>
       </Link>
       {/* if isLoggedIn true Profile, New Blog and Logout, else Login and Register */}
-      <div className="flex-none">
+      {/* <div className="flex-none">
         <div className="dropdown dropdown-end">
           <label tabindex="0" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
@@ -47,8 +47,8 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-      </div>
-      {/* <div className="flex-none">
+      </div> */}
+      <div className="flex-none">
         <div className="dropdown dropdown-end">
           <label tabindex="0" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
@@ -60,14 +60,18 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <button>Login</button>
+              <Link to="login">
+                <button>Login</button>
+              </Link>
             </li>
             <li>
-              <button>Register</button>
+              <Link to="register">
+                <button>Register</button>
+              </Link>
             </li>
           </ul>
         </div>
-      </div> */}
+      </div>
       {/* navbar should be on the top,
         click user icon to see a dropdown menu,
         if you logged in: profile, new blog and logout options,

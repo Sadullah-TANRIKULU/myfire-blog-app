@@ -1,8 +1,8 @@
 # PSEUDOCODE:
 * create folder tree **done**
-* create router structure (Browser Router her şeyi sarmalar)
+* create router structure (Browser Router her şeyi sarmalar) **done**
 * authentication via firebase then username, password info in AuthContext (currentUser: info...)
-* build navbar
+* build navbar **done**
 * build pages
 * build context (ContextProvider sarmalasın)
 * .env

@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 const Profile = () => {
   return (
     <div className="profile m-4 ">
-      <div className="avatar flex flex-col justify-center items-center ">
+      <div className="flex flex-col justify-center items-center gap-4 ">
         <div className="w-24 mask mask-hexagon">
           <img src="https://placeimg.com/192/192/people" alt="profile pic" />
         </div>
@@ -10,13 +12,16 @@ const Profile = () => {
             <span class="text-3xl">K</span>
           </div>
         </div> */}
-        <div className="displayName">
-          <input className="text-center" type="text" value={"blogger name here"} />
+        <div className="displayName w-full ">
+          <input className="input text-center w-11/12 " type="text" value={"blogger name here"} />
         </div>
-        <div className="displayEmail">
-          <input className="text-center" type="email" value={"blogger email here"} />
+        <div className="displayEmail w-full ">
+          <input className="input text-center w-11/12 " type="email" value={"blogger email here"} />
         </div>
-        <textarea name="textarea" value={"blogger background here"}></textarea>
+        <div className="moreabout textarea w-11/12 ">
+
+        <article >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae tempore officia ipsum perspiciatis id ullam beatae repellendus architecto autem. Non. click <Link to="/about">About Me</Link> to read more...</article>
+        </div>
       </div>
     </div>
   );
