@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-secondary flex justify-between">
+    <div className="navbar bg-secondary flex justify-between sticky top-0 z-10 ">
       <Link to="/">
         <div className="w-10 rounded-full">
           <img src={claruswayIcon} alt="clarusway" />

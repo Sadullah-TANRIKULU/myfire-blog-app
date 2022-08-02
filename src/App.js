@@ -6,7 +6,7 @@ import BlogContextProvider from './contexts/BlogContext';
 
 function App() {
   return (
-    <div className="App h-screen font-ffKanit ">
+    <div className="App h-screen font-ffKanit relative">
       <BrowserRouter >
         <AuthContextProvider >
           <BlogContextProvider >

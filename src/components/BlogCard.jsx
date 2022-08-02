@@ -32,7 +32,7 @@ console.log(blogAllInfo);
 
     return ( 
         
-        <div className="blogcard grid sm:grid-cols-2 lg:grid-cols-4 gap-10 ">
+        <div className="blogcard grid sm:grid-cols-2 lg:grid-cols-4 gap-10 " >
             { blogAllInfo?.map((item) => {
                 return <BlogForm 
                 id={item.id}

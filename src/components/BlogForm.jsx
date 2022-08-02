@@ -2,29 +2,32 @@ import { useNavigate } from "react-router-dom";
 
 const BlogForm = (props) => {
   // console.log(props);
-  const { id, authorEmail, newBlogTitle, newBlogImgUrl, newBlogContent, newBlogCreateTime } = props;
+  const {
+    id,
+    authorEmail,
+    newBlogTitle,
+    newBlogImgUrl,
+    newBlogContent,
+    newBlogCreateTime,
+  } = props;
   const navigate = useNavigate();
-
-
-
+  const handleClickBlogForm = () => {
+    navigate(`details/${id}`, { state: { id: id, authorEmail: authorEmail } });
+  };
 
   return (
     <div
-      className="blogform card card-compact justify-between w-full bg-base-100 shadow-xl cursor-pointer"
-      onClick={() => navigate("details", {state:{ id: id }})}
+      className="blogform card card-compact justify-between w-full bg-base-100 shadow-xl cursor-pointer "
+      onClick={handleClickBlogForm}
       key={id}
     >
       <figure>
-        <img
-          className="w-full"
-          src={newBlogImgUrl}
-          alt={newBlogTitle}
-        />
+        <img className="w-full max-h-80" src={newBlogImgUrl} alt={newBlogTitle} />
       </figure>
       <div className="card-body w-11/12">
         <h2 className="card-title font-ffAcme uppercase ">{newBlogTitle}</h2>
-        <span className="text-start" >{newBlogCreateTime}</span>
-        <p className="truncate text-start" >{newBlogContent}</p>
+        <span className="text-start">{newBlogCreateTime}</span>
+        <p className="truncate text-start">{newBlogContent}</p>
       </div>
       <div className="card-actions justify-start items-center">
         <div className="avatar">
@@ -38,7 +41,7 @@ const BlogForm = (props) => {
         <p>{authorEmail}</p>
       </div>
       <div className="cardfootericons flex items-center justify-start gap-2 m-2 ">
-        <div className="hearticon flex items-center justify-start gap-2 " >
+        <div className="hearticon flex items-center justify-start gap-2 ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
