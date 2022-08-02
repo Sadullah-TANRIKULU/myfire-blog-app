@@ -14,12 +14,21 @@ const UpdateBlog = () => {
   const location = useLocation();
   console.log(moveID);
 
+  const year = new Date().getFullYear().toString();
+  const month = (new Date().getMonth() + 1).toString();
+  const day = new Date().getDay().toString();
+
+  const blogLastUpdateTime = day + '/' + month + '/' + year;
+
+
+
   const handleUpdateBlog = (e, item) => {
     e.preventDefault();
     update(ref(db, `/${moveID}`), {
       newBlogTitle: newBlogTitle,
       newBlogImgUrl: newBlogImgUrl,
       newBlogContent: newBlogContent,
+      blogLastUpdateTime: blogLastUpdateTime  // DOM a basılacak
     });
     // console.log(newBlogTitle);
     // console.log(newBlogImgUrl);

@@ -17,7 +17,7 @@ const BlogForm = (props) => {
   const handleClickBlogForm = () => {
     setMoveID(id);
     setAuthorEmailInfo(authorEmail);
-    navigate(`details/${id}`, { state: { authorEmail: authorEmail } });
+    navigate(`details/${id}`);
   };
 
   return (
