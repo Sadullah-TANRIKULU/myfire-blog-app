@@ -11,7 +11,7 @@ const Details = () => {
   const location = useLocation();
 
   const { currentUser } = useContext(AuthContext);
-  const { blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent } = useContext(BlogContext);
+  const { blogAllInfo, setNewBlogTitle, setNewBlogImgUrl, setNewBlogContent, setMoveID, moveID, authorEmailInfo, setAuthorEmailInfo } = useContext(BlogContext);
   // console.log(location.state.id);
   // console.log(location.state.authorEmail);
   // console.log(currentUser.email);
@@ -27,7 +27,9 @@ const Details = () => {
     setNewBlogTitle(item.newBlogTitle);
     setNewBlogImgUrl(item.newBlogImgUrl);
     setNewBlogContent(item.newBlogContent);
-    navigate('/updateblog', { state: {id: item.id} })
+    setMoveID(item.id);
+    setAuthorEmailInfo(item.email);
+    navigate('/updateblog')
 
   }
 
@@ -38,7 +40,7 @@ const Details = () => {
       {blogAllInfo?.map((item) => {
         return (
           <div key={item.id} className="max-w-screen-md" >
-            {item.id === location.state.id && (
+            {item.id === moveID && (
               <div>
                 <div className="blogform card card-compact justify-between w-full bg-base-100 shadow-xl cursor-pointer">
                   <figure>
@@ -96,8 +98,7 @@ const Details = () => {
                     </div>
                   </div>
                 </div>
-
-                  { currentUser.email === location.state.authorEmail && <div className="card-actions w-full flex justify-evenly my-4 ">
+                  { currentUser.email === authorEmailInfo && <div className="card-actions w-full flex justify-evenly my-4 ">
                   <button
                     className="btn btn-secondary"
                     onClick={() => handleInputToUpdate(item)}

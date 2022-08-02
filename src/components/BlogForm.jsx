@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { BlogContext } from "../contexts/BlogContext";
 
 const BlogForm = (props) => {
   // console.log(props);
+  const { setMoveID, setAuthorEmailInfo } = useContext(BlogContext);
   const {
     id,
     authorEmail,
@@ -12,7 +15,9 @@ const BlogForm = (props) => {
   } = props;
   const navigate = useNavigate();
   const handleClickBlogForm = () => {
-    navigate(`details/${id}`, { state: { id: id, authorEmail: authorEmail } });
+    setMoveID(id);
+    setAuthorEmailInfo(authorEmail);
+    navigate(`details/${id}`, { state: { authorEmail: authorEmail } });
   };
 
   return (

@@ -1,31 +1,44 @@
+import { ref, update } from "firebase/database";
 import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 import { BlogContext } from "../contexts/BlogContext";
+import { db } from "../helpers/firebase";
 
 const UpdateBlog = () => {
-  const { blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent } = useContext(BlogContext);
-  // console.log(blogAllInfo);
+  const { blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent, moveID, setAuthorEmailInfo } = useContext(BlogContext);
+
+  const { currentUser } = useContext(AuthContext);
+  console.log(currentUser);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.state.id);
+  console.log(moveID);
 
-  const handleUpdateBlog = (item) => {
-    item.preventDefault();
-    console.log(newBlogTitle);
-    console.log(newBlogImgUrl);
-    console.log(newBlogContent);
-    // navigate("/details")
+  const handleUpdateBlog = (e, item) => {
+    e.preventDefault();
+    update(ref(db, `/${moveID}`), {
+      newBlogTitle: newBlogTitle,
+      newBlogImgUrl: newBlogImgUrl,
+      newBlogContent: newBlogContent,
+    });
+    // console.log(newBlogTitle);
+    // console.log(newBlogImgUrl);
+    // console.log(newBlogContent);
+    // console.log(item.authorEmail);
+    setAuthorEmailInfo(item.authorEmail);
+    navigate(`/details/${moveID}`);
+    // navigate('/');
   };
    
 
   return (
     <div className="updateblog" >
       {blogAllInfo?.map((item, index) => {
-        console.log(item.id);
+        // console.log(item.id);
         return (
           <div key={index} className="max-w-screen-md">
-            {item.id === location.state.id && (
-              <form onSubmit={() => handleUpdateBlog(item)} >
+            {item.id === moveID && (
+            <form onSubmit={(e) => handleUpdateBlog(e, item)} >
                 <div className="newblog m-4 overflow-hidden ">
                   <div className="flex flex-col justify-center items-center ">
                     <figure>

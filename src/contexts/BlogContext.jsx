@@ -9,6 +9,8 @@ const BlogContextProvider = ({ children }) => {
   const [newBlogTitle, setNewBlogTitle] = useState("");
   const [newBlogImgUrl, setNewBlogImgUrl] = useState("");
   const [newBlogContent, setNewBlogContent] = useState("");
+  const [moveID, setMoveID] = useState('');
+  const [authorEmailInfo, setAuthorEmailInfo] = useState('');
 
   useEffect(() => {
     try {
@@ -32,7 +34,7 @@ const BlogContextProvider = ({ children }) => {
 
   return (
     <BlogContext.Provider
-      value={{ blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent }}
+      value={{ blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent, moveID, setMoveID, authorEmailInfo, setAuthorEmailInfo }}
     >
       {children}
     </BlogContext.Provider>
