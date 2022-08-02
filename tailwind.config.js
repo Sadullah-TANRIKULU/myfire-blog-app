@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        ffKanit:['Kanit', 'monospace']
+        ffKanit: ['Kanit', 'monospace'],
+        ffAcme: ['Acme', 'monospace']
       },
     },
   },

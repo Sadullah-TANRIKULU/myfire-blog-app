@@ -1,16 +1,29 @@
 import { ref, set } from "firebase/database";
+import { useContext } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { uid } from "uid";
+import { AuthContext } from "../contexts/AuthContext";
 // import { AuthContext } from "../contexts/AuthContext";
 import { db } from "../helpers/firebase";
 
 
 const NewBlog = () => {
-  const pictureUrlHere = "https://placeimg.com/400/225/arch";
-  const blogPictureHere = pictureUrlHere;
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  // const pictureUrlHere = "https://placeimg.com/400/225/arch";
+  // const blogPictureHere = pictureUrlHere;
   const [newBlogTitle, setNewBlogTitle] = useState('');
   const [newBlogImgUrl, setNewBlogImgUrl] = useState('');
   const [newBlogContent, setNewBlogContent] = useState('');
+
+  const year = new Date().getFullYear().toString();
+  const month = (new Date().getMonth() + 1).toString();
+  const day = new Date().getDay().toString();
+
+  const newBlogCreateTime = day + '/' + month + '/' + year;
+  
 
   const writeToDatabase = (e) => {
     e.preventDefault();
@@ -21,15 +34,19 @@ const NewBlog = () => {
       newBlogTitle: newBlogTitle,
       newBlogImgUrl: newBlogImgUrl,
       newBlogContent: newBlogContent, 
-      id: uuid
+      id: uuid,
+      "authorEmail": currentUser.email,
+      newBlogCreateTime: newBlogCreateTime,
+
     });
 
     setNewBlogTitle('');
     setNewBlogImgUrl('');
     setNewBlogContent('');
+    navigate('/');
   }
 
-  console.log(newBlogImgUrl);
+  
 
 
 
