@@ -4,19 +4,21 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { uid } from "uid";
 import { AuthContext } from "../contexts/AuthContext";
+import { BlogContext } from "../contexts/BlogContext";
 // import { AuthContext } from "../contexts/AuthContext";
 import { db } from "../helpers/firebase";
 
 
 const NewBlog = () => {
   const { currentUser } = useContext(AuthContext);
+  const { blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent } = useContext(BlogContext);
   const navigate = useNavigate();
 
   // const pictureUrlHere = "https://placeimg.com/400/225/arch";
   // const blogPictureHere = pictureUrlHere;
-  const [newBlogTitle, setNewBlogTitle] = useState('');
-  const [newBlogImgUrl, setNewBlogImgUrl] = useState('');
-  const [newBlogContent, setNewBlogContent] = useState('');
+  // const [newBlogTitle, setNewBlogTitle] = useState('');
+  // const [newBlogImgUrl, setNewBlogImgUrl] = useState('');
+  // const [newBlogContent, setNewBlogContent] = useState('');
 
   const year = new Date().getFullYear().toString();
   const month = (new Date().getMonth() + 1).toString();

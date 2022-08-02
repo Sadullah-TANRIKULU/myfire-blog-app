@@ -8,12 +8,12 @@ function App() {
   return (
     <div className="App h-screen font-ffKanit relative">
       <BrowserRouter >
-        <AuthContextProvider >
-          <BlogContextProvider >
+        <BlogContextProvider >
+          <AuthContextProvider >
             <AppRouter />
             {/* <Deneme /> */}
-          </BlogContextProvider>
-        </AuthContextProvider>
+          </AuthContextProvider>
+        </BlogContextProvider>
       </BrowserRouter>
     </div>
   );

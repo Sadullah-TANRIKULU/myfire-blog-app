@@ -11,16 +11,27 @@ const Details = () => {
   const location = useLocation();
 
   const { currentUser } = useContext(AuthContext);
-  const { blogAllInfo } = useContext(BlogContext);
+  const { blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent } = useContext(BlogContext);
   // console.log(location.state.id);
-  console.log(location.state.authorEmail);
-  console.log(currentUser.email);
+  // console.log(location.state.authorEmail);
+  // console.log(currentUser.email);
 
   const handleDeleteBlog = (item) => {
     // console.log(item.id);
     remove(ref(db, `/${item.id}`));
     navigate("/");
   };
+
+  const handleInputToUpdate = (item) => {
+    console.log(item);
+    setNewBlogTitle(item.newBlogTitle);
+    setNewBlogImgUrl(item.newBlogImgUrl);
+    setNewBlogContent(item.newBlogContent);
+    navigate('/updateblog', { state: {id: item.id} })
+
+  }
+
+  
 
   return (
     <div className="details mt-4 flex flex-col justify-center items-center border-2 border-teal-700 ">
@@ -89,7 +100,7 @@ const Details = () => {
                   { currentUser.email === location.state.authorEmail && <div className="card-actions w-full flex justify-evenly my-4 ">
                   <button
                     className="btn btn-secondary"
-                    onClick={() => navigate("/updateblog")}
+                    onClick={() => handleInputToUpdate(item)}
                   >
                     UPDATE
                   </button>

@@ -28,7 +28,7 @@ const BlogCard = () => {
             console.error(error.message);
         }
     }, []);
-console.log(blogAllInfo);
+// console.log(blogAllInfo);
 
     return ( 
         
