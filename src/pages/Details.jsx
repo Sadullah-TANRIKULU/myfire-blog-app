@@ -9,14 +9,16 @@ const Details = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const blogAllInfo = useContext(BlogContext);
-  console.log(blogAllInfo);
+  const {blogAllInfo} = useContext(BlogContext);
+  // console.log(location.state.id);
 
   
 
   return (
     <div className="details mt-4 flex flex-col justify-center items-center ">
-      {/* <>
+      { blogAllInfo?.map((item) => {
+        return <div>
+        {(item.id === location.state.id) && <>
             <div
               className="blogform card card-compact justify-between w-full bg-base-100 shadow-xl cursor-pointer"
             >
@@ -86,7 +88,10 @@ const Details = () => {
                 DELETE
               </button>
             </div>
-          </> */}
+          </> } 
+        </div>
+      })}
+      {/*  */}
     </div>
   );
 };
