@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 import { BlogContext } from "../contexts/BlogContext";
 
 const BlogForm = (props) => {
   // console.log(props);
+  const { currentUser } = useContext(AuthContext);
   const { setMoveID, setAuthorEmailInfo } = useContext(BlogContext);
   const {
     id,
@@ -23,16 +25,22 @@ const BlogForm = (props) => {
   return (
     <div
       className="blogform card card-compact justify-between w-full bg-base-100 shadow-xl cursor-pointer "
-      onClick={handleClickBlogForm}
+      onClick={() => handleClickBlogForm()}
       key={id}
     >
       <figure>
-        <img className="w-full max-h-80" src={newBlogImgUrl} alt={newBlogTitle} />
+        <img
+          className="w-full max-h-80"
+          src={newBlogImgUrl}
+          alt={newBlogTitle}
+        />
       </figure>
       <div className="card-body w-11/12">
         <h2 className="card-title font-ffAcme uppercase ">{newBlogTitle}</h2>
         <span className="text-start">{newBlogCreateTime}</span>
-        <p className="text-ellipsis overflow-hidden text-start h-14 ">{newBlogContent}</p>
+        <p className="text-ellipsis overflow-hidden text-start h-14 ">
+          {newBlogContent}
+        </p>
       </div>
       <div className="card-actions justify-start items-center">
         <div className="avatar">
@@ -43,13 +51,13 @@ const BlogForm = (props) => {
             />
           </div>
         </div>
-        <p className="text-start truncate w-48" >{authorEmail}</p>
+        <p className="text-start truncate w-60 lg:w-80">{authorEmail}</p>
       </div>
       <div className="cardfootericons flex items-center justify-start gap-2 m-2 ">
         <div className="hearticon flex items-center justify-start gap-2 ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className={"" ? "fill-red-500 h-5 w-5" : "fill-black h-5 w-5"}
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -59,7 +67,12 @@ const BlogForm = (props) => {
               clipRule="evenodd"
             />
           </svg>
-          <p>0</p>
+          <p
+
+          // onChange={}
+          >
+            0
+          </p>
         </div>
         <div className="chaticon flex items-center justify-start gap-2 ">
           <svg

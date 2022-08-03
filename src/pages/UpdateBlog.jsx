@@ -36,7 +36,6 @@ const UpdateBlog = () => {
     // console.log(item.authorEmail);
     setAuthorEmailInfo(item.authorEmail);
     navigate(`/details/${moveID}`);
-    // navigate('/');
   };
    
 

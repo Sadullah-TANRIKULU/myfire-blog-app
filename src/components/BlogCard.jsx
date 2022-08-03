@@ -1,11 +1,15 @@
 import { onValue, ref } from "firebase/database";
+import { useContext } from "react";
 import { useEffect, useState } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 import { db } from "../helpers/firebase";
 import BlogForm from "./BlogForm";
 
 const BlogCard = () => {
 
     const [blogAllInfo, setBlogAllInfo] = useState([]);
+    const currentUser = useContext(AuthContext);
+    
 
 
 
@@ -42,6 +46,7 @@ const BlogCard = () => {
                 newBlogContent={ item.newBlogContent }
                 newBlogCreateTime={ item.newBlogCreateTime }
                 key={item.id}
+                
                 /> 
             }) }
            

@@ -11,7 +11,18 @@ const Details = () => {
   const location = useLocation();
 
   const { currentUser } = useContext(AuthContext);
-  const { blogAllInfo, setNewBlogTitle, setNewBlogImgUrl, setNewBlogContent, setMoveID, moveID, authorEmailInfo, setAuthorEmailInfo } = useContext(BlogContext);
+  const {
+    blogAllInfo,
+    setNewBlogTitle,
+    setNewBlogImgUrl,
+    setNewBlogContent,
+    setMoveID,
+    moveID,
+    authorEmailInfo,
+    setAuthorEmailInfo,
+    heartCounter,
+    setHeartCounter
+  } = useContext(BlogContext);
   // console.log(location.state.id);
   // console.log(location.state.authorEmail);
   // console.log(currentUser.email);
@@ -29,20 +40,25 @@ const Details = () => {
     setNewBlogContent(item.newBlogContent);
     setMoveID(item.id);
     setAuthorEmailInfo(item.email);
-    navigate('/updateblog')
+    navigate("/updateblog");
+  };
+
+  //icons
+  const handleHeartClick = () => {
+    setHeartCounter(heartCounter+1);
+    console.log('heartCounter',heartCounter);
+    console.log('liker',currentUser.email);
 
   }
-
-  
 
   return (
     <div className="details my-4 mx-2 flex flex-col justify-center items-center ">
       {blogAllInfo?.map((item) => {
         return (
-          <div key={item.id} className="" >
+          <div key={item.id} className="">
             {item.id === moveID && (
               <div>
-                <div className="card card-compact max-w-screen-md justify-between w-full bg-base-100 shadow-xl cursor-pointer mb-2 ">
+                <div className="card card-compact max-w-screen-md justify-between w-full bg-base-100 shadow-xl mb-2 ">
                   <figure>
                     <img
                       className="w-full"
@@ -72,7 +88,10 @@ const Details = () => {
                     <div className="hearticon flex items-center justify-start gap-2 ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
+                        className={
+                          heartCounter ? "fill-red-500 h-5 w-5 cursor-pointer" : "fill-black h-5 w-5 cursor-pointer"
+                        }
+                        onClick={handleHeartClick}
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -82,7 +101,7 @@ const Details = () => {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <p>0</p>
+                      <p>{heartCounter}</p>
                     </div>
                     <div className="chaticon flex items-center justify-start gap-2 ">
                       <svg
@@ -98,21 +117,22 @@ const Details = () => {
                     </div>
                   </div>
                 </div>
-                  { currentUser.email === authorEmailInfo && <div className="card-actions w-full flex justify-evenly my-4 ">
-                  <button
-                    className="btn btn-secondary"
-                    onClick={() => handleInputToUpdate(item)}
-                  >
-                    UPDATE
-                  </button>
-                  <button
-                    className="btn btn-error"
-                    onClick={() => handleDeleteBlog(item)}
-                  >
-                    DELETE
-                  </button>
-                </div> }
-                
+                {currentUser.email === authorEmailInfo && (
+                  <div className="card-actions w-full flex justify-evenly my-4 ">
+                    <button
+                      className="btn btn-secondary"
+                      onClick={() => handleInputToUpdate(item)}
+                    >
+                      UPDATE
+                    </button>
+                    <button
+                      className="btn btn-error"
+                      onClick={() => handleDeleteBlog(item)}
+                    >
+                      DELETE
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </div>

@@ -23,7 +23,7 @@ const Navbar = () => {
       </Link>
       <Link to="/">
         <h1 className="h-full text-center text-2xl tracking-tighter cursor-pointer ">
-          &lt;David Moses<span className="text-green-600">Blog/&gt;</span>
+          &lt;David Moses<span className="text-lime-600">Blog/&gt;</span>
         </h1>
       </Link>
       {currentUser ? (
