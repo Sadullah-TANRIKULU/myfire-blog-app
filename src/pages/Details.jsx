@@ -1,4 +1,4 @@
-import { onValue, ref, remove } from "firebase/database";
+import { onValue, ref, remove, update } from "firebase/database";
 import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -21,7 +21,9 @@ const Details = () => {
     authorEmailInfo,
     setAuthorEmailInfo,
     heartCounter,
-    setHeartCounter
+    setHeartCounter,
+    setMsg,
+    setDisplay
   } = useContext(BlogContext);
   // console.log(location.state.id);
   // console.log(location.state.authorEmail);
@@ -43,16 +45,26 @@ const Details = () => {
     navigate("/updateblog");
   };
 
+
+  // totalHeart: (item.heart.totalHeart + 1),
+  // liker: [...item.heart.liker, currentUser.email],
+  //  && !(item.heart.liker.includes(currentUser.email))
   //icons
   const handleHeartClick = (item) => {
-    console.log('heartCounter',heartCounter);
-    setHeartCounter(!heartCounter);
-    console.log('liker',currentUser.email);
-    console.log('blogOwner', item.authorEmail);
-    console.log(item.id);// db den gelen id
-    console.log(clickedID);// click ettiğim id
-
-  }
+    if (item.id === clickedID && !(item.heart.liker.includes(currentUser.email))) {
+      update(ref(db, `/${item.id}`), {
+        heart: {
+          totalHeart: (item.heart.totalHeart + 1),
+          liker: [...item.heart.liker, currentUser.email],
+        },
+      });
+    } else {
+      setMsg("you can like this article once");
+      setDisplay(true);
+    }
+    console.log(item.heart.totalHeart);
+    console.log(item.heart.liker);
+  };
 
   return (
     <div className="details my-4 mx-2 flex flex-col justify-center items-center ">
@@ -92,7 +104,9 @@ const Details = () => {
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className={
-                          heartCounter ? "fill-red-500 h-5 w-5 cursor-pointer" : "fill-black h-5 w-5 cursor-pointer"
+                          item.heart.totalHeart
+                            ? "fill-red-500 h-5 w-5 cursor-pointer"
+                            : "fill-black h-5 w-5 cursor-pointer"
                         }
                         onClick={() => handleHeartClick(item)}
                         viewBox="0 0 20 20"
@@ -104,7 +118,7 @@ const Details = () => {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <p>{heartCounter ? item.heart : 0}</p>
+                      <p>{item.heart.totalHeart}</p>
                     </div>
                     <div className="chaticon flex items-center justify-start gap-2 ">
                       <svg

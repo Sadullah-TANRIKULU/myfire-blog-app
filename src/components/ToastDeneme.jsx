@@ -11,7 +11,7 @@ const ToastDeneme = () => {
       // console.log(display);
       clearInterval(interval);
       setDisplay(false);
-    }, 3000);
+    }, 3500);
   }, [display]);
 
   return (
@@ -19,7 +19,7 @@ const ToastDeneme = () => {
       { display && (<div className="toast toast-top toast-end z-20 ">
         <div className="alert alert-info">
           <div>
-            <span>{msg}</span>
+            <span className="text-white" >{msg}</span>
           </div>
         </div>
       </div>) }

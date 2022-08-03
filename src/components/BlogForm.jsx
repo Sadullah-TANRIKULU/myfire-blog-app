@@ -23,7 +23,7 @@ const BlogForm = (props) => {
     setAuthorEmailInfo(authorEmail);
     navigate(`details/${id}`);
     if (!currentUser) {
-      setMsg("must login");
+      setMsg("please, login to see details");
       setDisplay(true);
     }
   };
@@ -31,7 +31,7 @@ const BlogForm = (props) => {
   return (
     <div
       className="blogform card card-compact justify-between w-full bg-base-100 shadow-xl cursor-pointer "
-      onClick={() => handleClickBlogForm()}
+      onClick={handleClickBlogForm}
       key={id}
     >
       <figure>
@@ -73,12 +73,7 @@ const BlogForm = (props) => {
               clipRule="evenodd"
             />
           </svg>
-          <p
-
-          // onChange={}
-          >
-            0
-          </p>
+          <p>0</p>
         </div>
         <div className="chaticon flex items-center justify-start gap-2 ">
           <svg

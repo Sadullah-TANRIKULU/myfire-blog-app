@@ -11,7 +11,7 @@ const BlogContextProvider = ({ children }) => {
   const [newBlogContent, setNewBlogContent] = useState("");
   const [clickedID, setClickedID] = useState('');
   const [authorEmailInfo, setAuthorEmailInfo] = useState('');
-  const [heartCounter, setHeartCounter] = useState(true);
+  const [heartCounter, setHeartCounter] = useState(0);
   const [display, setDisplay] = useState(false);
   const [msg, setMsg] = useState('');
 
