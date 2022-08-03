@@ -6,7 +6,8 @@ import { BlogContext } from "../contexts/BlogContext";
 const BlogForm = (props) => {
   // console.log(props);
   const { currentUser } = useContext(AuthContext);
-  const { setMoveID, setAuthorEmailInfo } = useContext(BlogContext);
+  const { setClickedID, setAuthorEmailInfo, setDisplay, setMsg } =
+    useContext(BlogContext);
   const {
     id,
     authorEmail,
@@ -16,10 +17,15 @@ const BlogForm = (props) => {
     newBlogCreateTime,
   } = props;
   const navigate = useNavigate();
+
   const handleClickBlogForm = () => {
-    setMoveID(id);
+    setClickedID(id);
     setAuthorEmailInfo(authorEmail);
     navigate(`details/${id}`);
+    if (!currentUser) {
+      setMsg("must login");
+      setDisplay(true);
+    }
   };
 
   return (

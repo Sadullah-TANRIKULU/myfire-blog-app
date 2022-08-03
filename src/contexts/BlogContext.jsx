@@ -9,9 +9,12 @@ const BlogContextProvider = ({ children }) => {
   const [newBlogTitle, setNewBlogTitle] = useState("");
   const [newBlogImgUrl, setNewBlogImgUrl] = useState("");
   const [newBlogContent, setNewBlogContent] = useState("");
-  const [moveID, setMoveID] = useState('');
+  const [clickedID, setClickedID] = useState('');
   const [authorEmailInfo, setAuthorEmailInfo] = useState('');
-  const [heartCounter, setHeartCounter] = useState(0);
+  const [heartCounter, setHeartCounter] = useState(true);
+  const [display, setDisplay] = useState(false);
+  const [msg, setMsg] = useState('');
+
 
   useEffect(() => {
     try {
@@ -35,7 +38,7 @@ const BlogContextProvider = ({ children }) => {
 
   return (
     <BlogContext.Provider
-      value={{ blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent, moveID, setMoveID, authorEmailInfo, setAuthorEmailInfo, heartCounter, setHeartCounter }}
+      value={{ blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent, clickedID, setClickedID, authorEmailInfo, setAuthorEmailInfo, heartCounter, setHeartCounter, display, setDisplay, msg, setMsg }}
     >
       {children}
     </BlogContext.Provider>

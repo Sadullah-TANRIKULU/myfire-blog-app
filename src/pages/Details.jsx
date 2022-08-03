@@ -16,8 +16,8 @@ const Details = () => {
     setNewBlogTitle,
     setNewBlogImgUrl,
     setNewBlogContent,
-    setMoveID,
-    moveID,
+    setClickedID,
+    clickedID,
     authorEmailInfo,
     setAuthorEmailInfo,
     heartCounter,
@@ -38,16 +38,19 @@ const Details = () => {
     setNewBlogTitle(item.newBlogTitle);
     setNewBlogImgUrl(item.newBlogImgUrl);
     setNewBlogContent(item.newBlogContent);
-    setMoveID(item.id);
+    setClickedID(item.id);
     setAuthorEmailInfo(item.email);
     navigate("/updateblog");
   };
 
   //icons
-  const handleHeartClick = () => {
-    setHeartCounter(heartCounter+1);
+  const handleHeartClick = (item) => {
     console.log('heartCounter',heartCounter);
+    setHeartCounter(!heartCounter);
     console.log('liker',currentUser.email);
+    console.log('blogOwner', item.authorEmail);
+    console.log(item.id);// db den gelen id
+    console.log(clickedID);// click ettiğim id
 
   }
 
@@ -56,7 +59,7 @@ const Details = () => {
       {blogAllInfo?.map((item) => {
         return (
           <div key={item.id} className="">
-            {item.id === moveID && (
+            {item.id === clickedID && (
               <div>
                 <div className="card card-compact max-w-screen-md justify-between w-full bg-base-100 shadow-xl mb-2 ">
                   <figure>
@@ -91,7 +94,7 @@ const Details = () => {
                         className={
                           heartCounter ? "fill-red-500 h-5 w-5 cursor-pointer" : "fill-black h-5 w-5 cursor-pointer"
                         }
-                        onClick={handleHeartClick}
+                        onClick={() => handleHeartClick(item)}
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -101,7 +104,7 @@ const Details = () => {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <p>{heartCounter}</p>
+                      <p>{heartCounter ? item.heart : 0}</p>
                     </div>
                     <div className="chaticon flex items-center justify-start gap-2 ">
                       <svg

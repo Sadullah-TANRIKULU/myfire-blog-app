@@ -13,7 +13,7 @@ function App() {
         <BlogContextProvider >
           <AuthContextProvider >
             <AppRouter />
-            {/* <ToastDeneme /> */}
+            <ToastDeneme />
           </AuthContextProvider>
         </BlogContextProvider>
       </BrowserRouter>

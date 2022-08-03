@@ -6,13 +6,13 @@ import { BlogContext } from "../contexts/BlogContext";
 import { db } from "../helpers/firebase";
 
 const UpdateBlog = () => {
-  const { blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent, moveID, setAuthorEmailInfo } = useContext(BlogContext);
+  const { blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent, clickedID, setAuthorEmailInfo } = useContext(BlogContext);
 
   const { currentUser } = useContext(AuthContext);
   console.log(currentUser);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(moveID);
+  console.log(clickedID);
 
   const year = new Date().getFullYear().toString();
   const month = (new Date().getMonth() + 1).toString();
@@ -24,7 +24,7 @@ const UpdateBlog = () => {
 
   const handleUpdateBlog = (e, item) => {
     e.preventDefault();
-    update(ref(db, `/${moveID}`), {
+    update(ref(db, `/${item.id}`), {
       newBlogTitle: newBlogTitle,
       newBlogImgUrl: newBlogImgUrl,
       newBlogContent: newBlogContent,
@@ -35,7 +35,7 @@ const UpdateBlog = () => {
     // console.log(newBlogContent);
     // console.log(item.authorEmail);
     setAuthorEmailInfo(item.authorEmail);
-    navigate(`/details/${moveID}`);
+    navigate(`/details/${clickedID}`);
   };
    
 
@@ -45,7 +45,7 @@ const UpdateBlog = () => {
         // console.log(item.id);
         return (
           <div key={item.id} className="max-w-screen-md">
-            {item.id === moveID && (
+            {item.id === clickedID && (
             <form onSubmit={(e) => handleUpdateBlog(e, item)} >
                 <div className="card card-compact max-w-screen-md justify-between w-full bg-base-100 shadow-xl cursor-pointer  m-4 overflow-hidden ">
                   <div className="flex flex-col justify-center items-center ">
