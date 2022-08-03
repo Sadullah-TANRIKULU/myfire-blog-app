@@ -28,7 +28,7 @@ const UpdateBlog = () => {
       newBlogTitle: newBlogTitle,
       newBlogImgUrl: newBlogImgUrl,
       newBlogContent: newBlogContent,
-      blogLastUpdateTime: blogLastUpdateTime  // DOM a basılacak
+      blogLastUpdateTime: blogLastUpdateTime+" updated"  // DOM a basılacak
     });
     // console.log(newBlogTitle);
     // console.log(newBlogImgUrl);
@@ -41,19 +41,19 @@ const UpdateBlog = () => {
    
 
   return (
-    <div className="updateblog" >
+    <div className="updateblog my-4 mx-2 flex flex-col justify-center items-center" >
       {blogAllInfo?.map((item, index) => {
         // console.log(item.id);
         return (
-          <div key={index} className="max-w-screen-md">
+          <div key={item.id} className="max-w-screen-md">
             {item.id === moveID && (
             <form onSubmit={(e) => handleUpdateBlog(e, item)} >
-                <div className="newblog m-4 overflow-hidden ">
+                <div className="card card-compact max-w-screen-md justify-between w-full bg-base-100 shadow-xl cursor-pointer  m-4 overflow-hidden ">
                   <div className="flex flex-col justify-center items-center ">
                     <figure>
                       <img src={newBlogImgUrl} alt={newBlogTitle} />
                     </figure>
-                    <div className="flex flex-col overflow-hidden h-11/12 w-11/12 lg:w-5/12 bg-base-100 shadow-xl">
+                    <div className="flex flex-col overflow-hidden h-11/12 w-11/12 bg-base-100 ">
                       <div className="flex flex-col gap-8 my-4 ">
                         <div className="displayName w-full ">
                           <input
@@ -72,7 +72,7 @@ const UpdateBlog = () => {
                           />
                         </div>
                         <textarea
-                          className="textarea prose prose-stone md:prose-base lg:prose-xl m-4 lg:resize "
+                          className="textarea prose prose-stone md:prose-base lg:prose-xl m-4 lg:resize-y h-80"
                           value={newBlogContent}
                           onChange={(e) => setNewBlogContent(e.target.value)}
                         ></textarea>
@@ -80,7 +80,7 @@ const UpdateBlog = () => {
                     </div>
                   </div>
                 </div>
-                <div className="card-actions justify-center">
+                <div className="card-actions justify-center mb-4">
                   <button
                     type="submit"
                     className="btn btn-secondary"

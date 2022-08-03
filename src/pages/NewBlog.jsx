@@ -53,16 +53,16 @@ const NewBlog = () => {
 
 
   return (
-    <div className="newblog m-4 overflow-hidden ">
+    <div className="newblog m-4 overflow-hidden">
       <form 
       className="flex flex-col justify-center items-center "
       onSubmit={writeToDatabase}
       >
         <figure>
-          <img src={newBlogImgUrl} alt="blogPicture here" />
+          <img src={newBlogImgUrl} alt={newBlogTitle} />
         </figure>
-        <div className="flex flex-col overflow-hidden h-11/12 w-11/12 lg:w-5/12 bg-base-100 shadow-xl">
-          <div className="flex flex-col gap-8 my-4 ">
+        <div className="flex flex-col overflow-hidden h-11/12 w-11/12 lg:w-6/12  bg-base-100 shadow-xl ">
+          <div className="flex flex-col gap-6 my-4 w-full ">
             <div className="displayName w-full ">
               <input
                 className="input text-center w-3/4"
@@ -82,7 +82,7 @@ const NewBlog = () => {
               />
             </div>
             <textarea
-              className="prose prose-stone md:prose-base lg:prose-xl textarea m-4 lg:resize "
+              className="prose prose-stone md:prose-base lg:prose-xl textarea m-4 lg:resize-y "
               name="textarea"
               placeholder="write here body of article"
               value={newBlogContent}
@@ -90,7 +90,7 @@ const NewBlog = () => {
             ></textarea>
           </div>
         </div>
-        <div className="form-control my-6 w-11/12 ">
+        <div className="form-control my-6 ">
           <button type="submit" className="btn btn-primary">
             Submit
           </button>

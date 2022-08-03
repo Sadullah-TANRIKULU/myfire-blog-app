@@ -18,4 +18,4 @@
 * path = '/' element={Dashboard}
 * başa dön, sona git eklenebilir
 * styling is up to individuals
-* privaterouter childları da kapsamalı yoksa adres satırına yazarak ulaşılabilir
+* privaterouter childları da kapsamalı yoksa adres satırına yazarak ulaşılabilir **done**

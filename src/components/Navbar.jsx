@@ -28,7 +28,7 @@ const Navbar = () => {
       </Link>
       {currentUser ? (
         <div className="flex-none">
-          <span>{currentUser.email}</span>
+          <span className="hidden sm:inline" >{currentUser.email}</span>
           <div className="dropdown dropdown-end">
             <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">

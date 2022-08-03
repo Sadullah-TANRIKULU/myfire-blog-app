@@ -36,13 +36,13 @@ const Details = () => {
   
 
   return (
-    <div className="details mt-4 flex flex-col justify-center items-center border-2 border-teal-700 ">
+    <div className="details my-4 mx-2 flex flex-col justify-center items-center ">
       {blogAllInfo?.map((item) => {
         return (
-          <div key={item.id} className="max-w-screen-md" >
+          <div key={item.id} className="" >
             {item.id === moveID && (
               <div>
-                <div className="blogform card card-compact justify-between w-full bg-base-100 shadow-xl cursor-pointer">
+                <div className="card card-compact max-w-screen-md justify-between w-full bg-base-100 shadow-xl cursor-pointer mb-2 ">
                   <figure>
                     <img
                       className="w-full"
@@ -55,7 +55,7 @@ const Details = () => {
                       {item.newBlogTitle}
                     </h2>
                     <span className="text-start">{item.newBlogCreateTime}</span>
-                    <p className="truncate text-start">{item.newBlogContent}</p>
+                    <p className="text-start">{item.newBlogContent}</p>
                   </div>
                   <div className="card-actions justify-start items-center">
                     <div className="avatar">

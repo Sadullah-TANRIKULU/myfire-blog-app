@@ -32,7 +32,7 @@ const BlogForm = (props) => {
       <div className="card-body w-11/12">
         <h2 className="card-title font-ffAcme uppercase ">{newBlogTitle}</h2>
         <span className="text-start">{newBlogCreateTime}</span>
-        <p className="truncate text-start">{newBlogContent}</p>
+        <p className="text-ellipsis overflow-hidden text-start h-14 ">{newBlogContent}</p>
       </div>
       <div className="card-actions justify-start items-center">
         <div className="avatar">
@@ -43,7 +43,7 @@ const BlogForm = (props) => {
             />
           </div>
         </div>
-        <p>{authorEmail}</p>
+        <p className="text-start truncate w-48" >{authorEmail}</p>
       </div>
       <div className="cardfootericons flex items-center justify-start gap-2 m-2 ">
         <div className="hearticon flex items-center justify-start gap-2 ">
