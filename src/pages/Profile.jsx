@@ -1,6 +1,10 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Profile = () => {
+  const { currentUser } = useContext(AuthContext);
+  // console.log(currentUser);
+
   return (
     <div className="profile m-4 ">
       <div className="flex flex-col justify-center items-center gap-4 ">
@@ -13,14 +17,20 @@ const Profile = () => {
           </div>
         </div> */}
         <div className="displayName w-full ">
-          <input className="input text-center w-11/12 " type="text" defaultValue={"blogger name here"} />
+          <p>{currentUser.displayName}</p>
         </div>
         <div className="displayEmail w-full ">
-          <input className="input text-center w-11/12 " type="email" defaultValue={"blogger email here"} />
+          <p>{currentUser.email}</p>
+          <p>{currentUser.emailVerified}</p>
+          <p><span>Last login time : </span>{currentUser.metadata.lastSignInTime}</p>
+          
         </div>
-        <div className="moreabout textarea w-11/12 ">
-
-        <article >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae tempore officia ipsum perspiciatis id ullam beatae repellendus architecto autem. Non. click <Link to="/about">About Me</Link> to read more...</article>
+        <div className="moreabout w-full ">
+          <textarea className="textarea prose prose-stone md:prose-base lg:prose-xl m-4 lg:resize h-80 md:w-full " >
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae
+            tempore officia ipsum perspiciatis id ullam beatae repellendus
+            architecto autem. Non. click to read more...
+          </textarea>
         </div>
       </div>
     </div>

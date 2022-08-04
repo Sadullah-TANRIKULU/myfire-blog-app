@@ -6,7 +6,7 @@ import { BlogContext } from "../contexts/BlogContext";
 import { db } from "../helpers/firebase";
 
 const UpdateBlog = () => {
-  const { blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent, clickedID, setAuthorEmailInfo } = useContext(BlogContext);
+  const { blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent, clickedID, setAuthorEmailInfo, setMsg, setDisplay } = useContext(BlogContext);
 
   const { currentUser } = useContext(AuthContext);
   console.log(currentUser);
@@ -36,6 +36,8 @@ const UpdateBlog = () => {
     // console.log(item.authorEmail);
     setAuthorEmailInfo(item.authorEmail);
     navigate(`/details/${clickedID}`);
+    setMsg('Updated successfully');
+    setDisplay(true);
   };
    
 

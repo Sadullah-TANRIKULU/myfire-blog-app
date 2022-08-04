@@ -14,6 +14,7 @@ const BlogForm = (props) => {
     heartCounter,
     setHeartCounter,
     blogAllInfo,
+    clickedID,
   } = useContext(BlogContext);
   const {
     id,
@@ -22,7 +23,7 @@ const BlogForm = (props) => {
     newBlogImgUrl,
     newBlogContent,
     newBlogCreateTime,
-    heart
+    heart,
   } = props;
   const navigate = useNavigate();
 
@@ -35,9 +36,8 @@ const BlogForm = (props) => {
       setDisplay(true);
     }
   };
-  
-  console.log(heart);
 
+  // console.log(heart);
 
   return (
     <div
@@ -52,7 +52,7 @@ const BlogForm = (props) => {
           alt={newBlogTitle}
         />
       </figure>
-      <div className="card-body w-11/12">
+      <div className="card-body w-full p-2">
         <h2 className="card-title font-ffAcme uppercase ">{newBlogTitle}</h2>
         <span className="text-start">{newBlogCreateTime}</span>
         <p className="text-ellipsis overflow-hidden text-start h-14 ">
@@ -68,42 +68,52 @@ const BlogForm = (props) => {
             />
           </div>
         </div>
-        <p className="text-start truncate w-60 lg:w-80">{authorEmail}</p>
+        <p className="text-start truncate w-60 lg:w-70">{authorEmail}</p>
       </div>
 
-      <div className="cardfootericons flex items-center justify-start gap-2 m-2 ">
-        <div className="hearticon flex items-center justify-start gap-2 ">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className={
-              'heart.totalHeart'
-                ? "fill-red-500 h-5 w-5"
-                : "fill-black h-5 w-5"
-            }
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-              clipRule="evenodd"
-            />
-          </svg>
-          <p>{'...heart.totalHeart'}</p>
-        </div>
-        <div className="chaticon flex items-center justify-start gap-2 ">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
-            <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
-          </svg>
-          <p>0</p>
-        </div>
-      </div>
+      {blogAllInfo
+        ?.filter((filtered) => filtered.id === id)
+        .map((item, index) => {
+          
+          return (
+            <div 
+            className="cardfootericons flex items-center justify-start gap-2 m-2 " 
+            key={index}
+            >
+              <div className="hearticon flex items-center justify-start gap-2 ">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={
+                    item.heart.totalHeart
+                      ? "fill-red-500 h-5 w-5"
+                      : "fill-black h-5 w-5"
+                  }
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <p>{item.heart.totalHeart}</p>
+              </div>
+              <div className="chaticon flex items-center justify-start gap-2 ">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                  <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+                </svg>
+                <p>0</p>
+              </div>
+            </div>
+          );
+        })}
     </div>
   );
 };

@@ -2,18 +2,22 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import google from "../assets/google.png";
 import { AuthContext } from "../contexts/AuthContext";
+import { BlogContext } from "../contexts/BlogContext";
 import { forgotPassword, signIn, signUpProvider } from "../helpers/firebase";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { currentUser } = useContext(AuthContext);
+  const { setMsg, setDisplay } = useContext(BlogContext);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     // console.log(email, password);
     signIn(email, password, navigate);
+    setMsg("Logged in successfully");
+    setDisplay(true);
   };
 
   const withGoogleSignUp = () => {
@@ -26,10 +30,13 @@ const Login = () => {
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+            <p className="py-6 bg-slate-400/60 text-white ">
+              Welcome, I'm so glad you're here! You're now part of a growing
+              community of developers and fans who create, collaborate and
+              connect with each other all over the world via{" "}
+              <h1 className="h-full text-center text-2xl tracking-tighter cursor-pointer ">
+                <span className="text-lime-600">&lt;David Moses</span>Blog/&gt;
+              </h1>
             </p>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

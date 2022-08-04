@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import google from "../assets/google.png";
@@ -7,34 +8,41 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { setMsg, setDisplay } = useContext();
 
   const handleRegister = (e) => {
     e.preventDefault();
     // console.log(email, password);
     createUser(email, password);
-    navigate('/');
+    navigate("/");
+    setMsg("Registered successfully");
+    setDisplay(true);
   };
 
   const withGoogleSignUp = () => {
     signUpProvider(navigate);
-  }
+  };
 
   return (
     <div className="register">
       <div className="login bg-[url('https://picsum.photos/1600/900')] bg-cover h-screen ">
-        <div className="hero min-h-screen" >
+        <div className="hero min-h-screen">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="text-center lg:text-left">
               <h1 className="text-5xl font-bold">Register now!</h1>
-              <p className="py-6">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                assumenda excepturi exercitationem quasi. In deleniti eaque aut
-                repudiandae et a id nisi.
+              <p className="py-6 bg-slate-400/60 text-white ">
+                Welcome, I'm so glad you're here! You're now part of a growing
+                community of developers and fans who create, collaborate and
+                connect with each other all over the world via{" "}
+                <h1 className="h-full text-center text-2xl tracking-tighter cursor-pointer ">
+                  <span className="text-lime-600">&lt;David Moses</span>
+                  Blog/&gt;
+                </h1>
               </p>
             </div>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
               <div className="card-body">
-                <form onSubmit={handleRegister} >
+                <form onSubmit={handleRegister}>
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Email</span>

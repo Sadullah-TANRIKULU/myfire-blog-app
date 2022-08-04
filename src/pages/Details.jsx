@@ -33,6 +33,8 @@ const Details = () => {
     // console.log(item.id);
     remove(ref(db, `/${item.id}`));
     navigate("/");
+    setMsg('Deleted successfully');
+    setDisplay(true);
   };
 
   const handleInputToUpdate = (item) => {

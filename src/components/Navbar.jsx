@@ -2,16 +2,20 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import claruswayIcon from "../assets/cw.jpeg";
 import { AuthContext } from "../contexts/AuthContext";
+import { BlogContext } from "../contexts/BlogContext";
 import { logOut } from "../helpers/firebase";
 
 const Navbar = () => {
   // const [isCurrentUser, setIsCurrentUser] = useState(false);
   const { currentUser } = useContext(AuthContext);
+  const { setDisplay, setMsg } = useContext(BlogContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     logOut();
     navigate("/login");
+    setMsg('Logged out successfully');
+    setDisplay(true);
   };
 
   return (
@@ -28,7 +32,7 @@ const Navbar = () => {
       </Link>
       {currentUser ? (
         <div className="flex-none">
-          <span className="hidden sm:inline" >{currentUser.email}</span>
+          <span className="hidden first-letter:inline first-letter:text-xl sm:inline" >{currentUser.email}</span>
           <div className="dropdown dropdown-end">
             <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
@@ -41,7 +45,12 @@ const Navbar = () => {
             >
               <li>
                 <Link to="profile">
-                  <button>Profile</button>
+                  <button>User Profile</button>
+                </Link>
+              </li>
+              <li>
+                <Link to="about">
+                  <button>About Blog Owner</button>
                 </Link>
               </li>
               <li>
