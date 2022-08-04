@@ -34,10 +34,12 @@ const BlogCard = () => {
     }, []);
 // console.log(blogAllInfo);
 
+
     return ( 
         
         <div className="blogcard grid sm:grid-cols-2 lg:grid-cols-4 gap-10 " >
             { blogAllInfo?.map((item) => {
+                // console.log(item.heart);
                 return <BlogForm 
                 id={item.id}
                 authorEmail={ item.authorEmail } 
@@ -46,6 +48,7 @@ const BlogCard = () => {
                 newBlogContent={ item.newBlogContent }
                 newBlogCreateTime={ item.newBlogCreateTime }
                 key={item.id}
+                heart={item.heart}
                 
                 /> 
             }) }

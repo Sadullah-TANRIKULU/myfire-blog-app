@@ -6,8 +6,15 @@ import { BlogContext } from "../contexts/BlogContext";
 const BlogForm = (props) => {
   // console.log(props);
   const { currentUser } = useContext(AuthContext);
-  const { setClickedID, setAuthorEmailInfo, setDisplay, setMsg } =
-    useContext(BlogContext);
+  const {
+    setClickedID,
+    setAuthorEmailInfo,
+    setDisplay,
+    setMsg,
+    heartCounter,
+    setHeartCounter,
+    blogAllInfo,
+  } = useContext(BlogContext);
   const {
     id,
     authorEmail,
@@ -15,6 +22,7 @@ const BlogForm = (props) => {
     newBlogImgUrl,
     newBlogContent,
     newBlogCreateTime,
+    heart
   } = props;
   const navigate = useNavigate();
 
@@ -27,6 +35,9 @@ const BlogForm = (props) => {
       setDisplay(true);
     }
   };
+  
+  console.log(heart);
+
 
   return (
     <div
@@ -59,11 +70,16 @@ const BlogForm = (props) => {
         </div>
         <p className="text-start truncate w-60 lg:w-80">{authorEmail}</p>
       </div>
+
       <div className="cardfootericons flex items-center justify-start gap-2 m-2 ">
         <div className="hearticon flex items-center justify-start gap-2 ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={"" ? "fill-red-500 h-5 w-5" : "fill-black h-5 w-5"}
+            className={
+              'heart.totalHeart'
+                ? "fill-red-500 h-5 w-5"
+                : "fill-black h-5 w-5"
+            }
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -73,7 +89,7 @@ const BlogForm = (props) => {
               clipRule="evenodd"
             />
           </svg>
-          <p>0</p>
+          <p>{'...heart.totalHeart'}</p>
         </div>
         <div className="chaticon flex items-center justify-start gap-2 ">
           <svg
