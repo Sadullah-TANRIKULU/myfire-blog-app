@@ -24,13 +24,23 @@ const Login = () => {
     signUpProvider(navigate);
   };
 
+  const getNewPassword = () => {
+    
+    forgotPassword(email)
+    setMsg("Please check your mail box!")
+    setDisplay(true)
+      // setMsg("Something went wrong");
+      // setDisplay(true);
+    
+  }
+
   return (
     <div className="login bg-[url('https://picsum.photos/1600/900')] bg-cover h-screen ">
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6 bg-slate-400/60 text-white ">
+            <p className="p-6 bg-slate-400/60 text-white ">
               Welcome, I'm so glad you're here! You're now part of a growing
               community of developers and fans who create, collaborate and
               connect with each other all over the world via{" "}
@@ -50,6 +60,7 @@ const Login = () => {
                     type="email"
                     placeholder="email"
                     className="input input-bordered"
+                    required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -68,9 +79,9 @@ const Login = () => {
                   <label className="label">
                     <span
                       className="label-text-alt link link-hover"
-                      onClick={() => forgotPassword(email)}
+                      onClick={() => getNewPassword(email) }
                     >
-                      Forgot password?
+                      Forgot password? Enter your mail and click here!
                     </span>
                   </label>
                 </div>

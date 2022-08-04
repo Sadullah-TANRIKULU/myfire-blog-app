@@ -14,6 +14,7 @@ const BlogContextProvider = ({ children }) => {
   const [heartCounter, setHeartCounter] = useState(0);
   const [display, setDisplay] = useState(false);
   const [msg, setMsg] = useState('');
+  const [userImgUrl, setUserImgUrl] = useState('');
 
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const BlogContextProvider = ({ children }) => {
 
   return (
     <BlogContext.Provider
-      value={{ blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent, clickedID, setClickedID, authorEmailInfo, setAuthorEmailInfo, heartCounter, setHeartCounter, display, setDisplay, msg, setMsg }}
+      value={{ blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent, clickedID, setClickedID, authorEmailInfo, setAuthorEmailInfo, heartCounter, setHeartCounter, display, setDisplay, msg, setMsg, userImgUrl, setUserImgUrl }}
     >
       {children}
     </BlogContext.Provider>

@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import google from "../assets/google.png";
+import { BlogContext } from "../contexts/BlogContext";
 import { createUser, signUpProvider } from "../helpers/firebase";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { setMsg, setDisplay } = useContext();
+  const { setMsg, setDisplay } = useContext(BlogContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -30,7 +31,7 @@ const Register = () => {
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="text-center lg:text-left">
               <h1 className="text-5xl font-bold">Register now!</h1>
-              <p className="py-6 bg-slate-400/60 text-white ">
+              <p className="p-6 bg-slate-400/60 text-white ">
                 Welcome, I'm so glad you're here! You're now part of a growing
                 community of developers and fans who create, collaborate and
                 connect with each other all over the world via{" "}

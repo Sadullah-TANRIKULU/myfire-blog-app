@@ -64,19 +64,19 @@ class About extends Component {
             </label>
           </form>
         </article>
-        <dialog class="backdrop:bg-gray-50">
+        <dialog className="backdrop:bg-gray-50">
           <form method="dialog">
             <span> Dialog ipsum dolor sit amet, </span>{" "}
             <span> consectetur adipisicing elit. </span>{" "}
             <span> Possimus corporis esse aut asperiores porro at?</span>
           </form>
         </dialog>
-        <div class="group flex items-center">
-          <div class="rtl:mr-3">
-            <p class="text-xl font-medium text-slate-700 group-hover:text-slate-900">
+        <div className="group flex items-center">
+          <div className="rtl:mr-3">
+            <p className="text-xl font-medium text-slate-700 group-hover:text-slate-900">
               لبىباا يبلايلايلا
             </p>
-            <p class="text-sm font-medium text-slate-500 group-hover:text-slate-700">
+            <p className="text-sm font-medium text-slate-500 group-hover:text-slate-700">
               رلاىرلاىثقصثق
             </p>
           </div>

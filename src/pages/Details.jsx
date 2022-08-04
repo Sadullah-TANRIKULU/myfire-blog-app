@@ -7,6 +7,9 @@ import { AuthContext } from "../contexts/AuthContext";
 import { db } from "../helpers/firebase";
 
 const Details = () => {
+
+  const [commentInput, setCommentInput] = useState('');
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,7 +26,7 @@ const Details = () => {
     heartCounter,
     setHeartCounter,
     setMsg,
-    setDisplay
+    setDisplay,
   } = useContext(BlogContext);
   // console.log(location.state.id);
   // console.log(location.state.authorEmail);
@@ -33,12 +36,12 @@ const Details = () => {
     // console.log(item.id);
     remove(ref(db, `/${item.id}`));
     navigate("/");
-    setMsg('Deleted successfully');
+    setMsg("Deleted successfully");
     setDisplay(true);
   };
 
   const handleInputToUpdate = (item) => {
-    console.log(item);
+    // console.log(item);
     setNewBlogTitle(item.newBlogTitle);
     setNewBlogImgUrl(item.newBlogImgUrl);
     setNewBlogContent(item.newBlogContent);
@@ -47,16 +50,18 @@ const Details = () => {
     navigate("/updateblog");
   };
 
-
   // totalHeart: (item.heart.totalHeart + 1),
   // liker: [...item.heart.liker, currentUser.email],
   //  && !(item.heart.liker.includes(currentUser.email))
   //icons
   const handleHeartClick = (item) => {
-    if (item.id === clickedID && !(item.heart.liker.includes(currentUser.email))) {
+    if (
+      item.id === clickedID &&
+      !item.heart.liker.includes(currentUser.email)
+    ) {
       update(ref(db, `/${item.id}`), {
         heart: {
-          totalHeart: (item.heart.totalHeart + 1),
+          totalHeart: item.heart.totalHeart + 1,
           liker: [...item.heart.liker, currentUser.email],
         },
       });
@@ -67,6 +72,16 @@ const Details = () => {
     console.log(item.heart.totalHeart);
     console.log(item.heart.liker);
   };
+
+  const handleComment = (e, item) => {
+    e.preventDefault();
+    console.log('comment submitted');
+    setCommentInput('');
+    console.log('visitor comment : ', commentInput);
+    console.log(clickedID);
+    console.log(item.id);
+  }
+
 
   return (
     <div className="details my-4 mx-2 flex flex-col justify-center items-center ">
@@ -157,7 +172,18 @@ const Details = () => {
           </div>
         );
       })}
-      {/*  */}
+      <form className="form-control w-11/12 mb-0" onSubmit={(e) => handleComment(e)} >
+        <input
+          type="text"
+          placeholder="comments here for 50 characters"
+          className="input input-bordered w-full mb-4 peer"
+          maxLength="50"
+          value={commentInput}
+          onChange={(e) => setCommentInput(e.target.value)}
+        />
+        <p className="text-xs peer-invalid:visible text-lime-600 mt-0" >please press enter to submit your comment</p>
+      </form>
+      
     </div>
   );
 };

@@ -13,6 +13,8 @@ import {
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getDatabase } from "firebase/database";
+import { useContext } from "react";
+import { BlogContext } from "../contexts/BlogContext";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -24,6 +26,8 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_messagingSenderId,
   appId: process.env.REACT_APP_appId,
 };
+
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -58,7 +62,7 @@ export const signIn = async (email, password, navigate) => {
       password
     );
     // sessionStorage.setItem('user', JSON.stringify(userCredential.user));
-    console.log(userCredential);
+    // console.log(userCredential);
     navigate('/');
   } catch (error) {
     console.error(error.message);
@@ -107,12 +111,11 @@ export const forgotPassword = (email) => {
   sendPasswordResetEmail(auth, email)
     .then(() => {
       // Password reset email sent!
-      // toastWarnNotify('Please check your mail box!');
       // alert("Please check your mail box!");
       console.log("Please check your mail box!");
     })
     .catch((err) => {
-      // toastErrorNotify(err.message);
+      
       // alert(err.message);
       console.log(err.message);
     });

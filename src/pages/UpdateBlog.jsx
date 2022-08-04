@@ -9,16 +9,22 @@ const UpdateBlog = () => {
   const { blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent, clickedID, setAuthorEmailInfo, setMsg, setDisplay } = useContext(BlogContext);
 
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser);
+  // console.log(currentUser);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(clickedID);
+  // console.log(clickedID);
 
   const year = new Date().getFullYear().toString();
   const month = (new Date().getMonth() + 1).toString();
   const day = new Date().getDay().toString();
+  let hours = new Date().toLocaleTimeString();
+  console.log(hours);
+  // const hour =new Date().getHours.toString();
+  // const minute =new Date().getMinutes.toString();
+  // const second =new Date().getSeconds.toString();
 
-  const blogLastUpdateTime = day + '/' + month + '/' + year;
+  const blogLastUpdateTime = day + '/' + month + '/' + year + ' ' + hours;
+  console.log(blogLastUpdateTime);
 
 
 
