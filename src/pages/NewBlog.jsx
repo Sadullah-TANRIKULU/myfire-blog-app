@@ -39,6 +39,9 @@ const NewBlog = () => {
       id: uuid,
       "authorEmail": currentUser.email,
       newBlogCreateTime: newBlogCreateTime,
+      comments: {
+        visitorComment: [''],
+      },
       heart: {
         totalHeart: 0,
         liker: [''],

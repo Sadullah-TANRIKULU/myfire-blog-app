@@ -1,4 +1,4 @@
-import { onValue, ref, remove, update } from "firebase/database";
+import { onValue, ref, remove, set, update } from "firebase/database";
 import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -7,8 +7,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { db } from "../helpers/firebase";
 
 const Details = () => {
-
-  const [commentInput, setCommentInput] = useState('');
+  const [commentInput, setCommentInput] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -75,19 +74,22 @@ const Details = () => {
 
   const handleComment = (e, item) => {
     e.preventDefault();
-    console.log('comment submitted');
-    setCommentInput('');
-    console.log('visitor comment : ', commentInput);
-    console.log(clickedID);
-    console.log(item.id);
-  }
-
+    console.log("comment submitted");
+    setCommentInput("");
+    console.log("visitor comment : ", commentInput);
+    console.log(item.id, clickedID);
+    update(ref(db, `/${item.id}`), {
+      comments: {
+        visitorComment: [...item.comments.visitorComment, commentInput],
+      },
+    });
+  };
 
   return (
     <div className="details my-4 mx-2 flex flex-col justify-center items-center ">
-      {blogAllInfo?.map((item) => {
+      {blogAllInfo?.map((item, index) => {
         return (
-          <div key={item.id} className="">
+          <div key={index} className="">
             {item.id === clickedID && (
               <div>
                 <div className="card card-compact max-w-screen-md justify-between w-full bg-base-100 shadow-xl mb-2 ">
@@ -140,14 +142,18 @@ const Details = () => {
                     <div className="chaticon flex items-center justify-start gap-2 ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
+                        className={
+                          ((item.comments.visitorComment).length)
+                            ? "fill-teal-500 h-5 w-5 "
+                            : "fill-black h-5 w-5 "
+                        }
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
                         <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
                         <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
                       </svg>
-                      <p>0</p>
+                      <p>{(item.comments.visitorComment).length}</p>
                     </div>
                   </div>
                 </div>
@@ -167,23 +173,37 @@ const Details = () => {
                     </button>
                   </div>
                 )}
+
+                <form
+                  className="form-control w-11/12 mb-0"
+                  onSubmit={(e) => handleComment(e, item)}
+                >
+                  <input
+                    type="text"
+                    placeholder="comments here for 50 characters"
+                    className="input input-bordered w-full mb-4 peer"
+                    maxLength="50"
+                    value={commentInput}
+                    onChange={(e) => setCommentInput(e.target.value)}
+                  />
+                  <p className="text-xs peer-invalid:visible text-lime-600 mt-0">
+                    please press enter to submit your comment
+                  </p>
+                </form>
+                <div className="blockquote bg-emerald-100 text-start ">
+                  {item.comments.visitorComment.map((eachComment, index) => {
+                    return (
+                      <blockquote key={index} className="m-4">
+                        {eachComment}
+                      </blockquote>
+                    );
+                  })}
+                </div>
               </div>
             )}
           </div>
         );
       })}
-      <form className="form-control w-11/12 mb-0" onSubmit={(e) => handleComment(e)} >
-        <input
-          type="text"
-          placeholder="comments here for 50 characters"
-          className="input input-bordered w-full mb-4 peer"
-          maxLength="50"
-          value={commentInput}
-          onChange={(e) => setCommentInput(e.target.value)}
-        />
-        <p className="text-xs peer-invalid:visible text-lime-600 mt-0" >please press enter to submit your comment</p>
-      </form>
-      
     </div>
   );
 };
