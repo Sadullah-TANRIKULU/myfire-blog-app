@@ -40,7 +40,7 @@ const NewBlog = () => {
       "authorEmail": currentUser.email,
       newBlogCreateTime: newBlogCreateTime,
       comments: {
-        visitorComment: [''],
+        visitorComment: ['nice, you have written your first article'],
       },
       heart: {
         totalHeart: 0,

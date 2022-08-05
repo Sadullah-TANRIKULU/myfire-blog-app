@@ -64,13 +64,6 @@ class About extends Component {
             </label>
           </form>
         </article>
-        <dialog className="backdrop:bg-gray-50">
-          <form method="dialog">
-            <span> Dialog ipsum dolor sit amet, </span>{" "}
-            <span> consectetur adipisicing elit. </span>{" "}
-            <span> Possimus corporis esse aut asperiores porro at?</span>
-          </form>
-        </dialog>
         <div className="group flex items-center">
           <div className="rtl:mr-3">
             <p className="text-xl font-medium text-slate-700 group-hover:text-slate-900">

@@ -175,7 +175,7 @@ const Details = () => {
                 )}
 
                 <form
-                  className="form-control w-11/12 mb-0"
+                  className="form-control w-full m-2"
                   onSubmit={(e) => handleComment(e, item)}
                 >
                   <input
@@ -186,14 +186,14 @@ const Details = () => {
                     value={commentInput}
                     onChange={(e) => setCommentInput(e.target.value)}
                   />
-                  <p className="text-xs peer-invalid:visible text-lime-600 mt-0">
+                  <p className="text-xs peer-invalid:visible text-lime-600 ">
                     please press enter to submit your comment
                   </p>
                 </form>
-                <div className="blockquote bg-emerald-100 text-start ">
+                <div className="blockquote text-start ">
                   {item.comments.visitorComment.map((eachComment, index) => {
                     return (
-                      <blockquote key={index} className="m-4">
+                      <blockquote key={index} className="odd:bg-emerald-100 m-4">
                         {eachComment}
                       </blockquote>
                     );
