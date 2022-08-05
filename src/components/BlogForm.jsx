@@ -6,13 +6,8 @@ import { BlogContext } from "../contexts/BlogContext";
 const BlogForm = (props) => {
   // console.log(props);
   const { currentUser } = useContext(AuthContext);
-  const {
-    setClickedID,
-    setAuthorEmailInfo,
-    setDisplay,
-    setMsg,
-    blogAllInfo,
-  } = useContext(BlogContext);
+  const { setClickedID, setAuthorEmailInfo, setDisplay, setMsg, blogAllInfo } =
+    useContext(BlogContext);
   const {
     id,
     authorEmail,
@@ -20,6 +15,7 @@ const BlogForm = (props) => {
     newBlogImgUrl,
     newBlogContent,
     newBlogCreateTime,
+    blogLastUpdateTime,
   } = props;
   const navigate = useNavigate();
 
@@ -50,7 +46,13 @@ const BlogForm = (props) => {
       </figure>
       <div className="card-body w-full p-2">
         <h2 className="card-title font-ffAcme uppercase ">{newBlogTitle}</h2>
-        <span className="text-start">{newBlogCreateTime}</span>
+
+        {blogLastUpdateTime ? (
+          <p className="text-start">{blogLastUpdateTime}</p>
+        ) : (
+          <span className="text-start">{newBlogCreateTime}</span>
+        )}
+
         <p className="text-ellipsis overflow-hidden text-start h-14 ">
           {newBlogContent}
         </p>
@@ -70,11 +72,10 @@ const BlogForm = (props) => {
       {blogAllInfo
         ?.filter((filtered) => filtered.id === id)
         .map((item, index) => {
-          
           return (
-            <div 
-            className="cardfootericons flex items-center justify-start gap-2 m-2 " 
-            key={index}
+            <div
+              className="cardfootericons flex items-center justify-start gap-2 m-2 "
+              key={index}
             >
               <div className="hearticon flex items-center justify-start gap-2 ">
                 <svg
@@ -99,7 +100,7 @@ const BlogForm = (props) => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className={
-                    ((item.comments.visitorComment).length)
+                    item.comments.visitorComment.length
                       ? "fill-emerald-500 h-5 w-5 "
                       : "fill-black h-5 w-5 "
                   }
@@ -109,7 +110,7 @@ const BlogForm = (props) => {
                   <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
                   <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
                 </svg>
-                <p>{(item.comments.visitorComment).length}</p>
+                <p>{item.comments.visitorComment.length}</p>
               </div>
             </div>
           );

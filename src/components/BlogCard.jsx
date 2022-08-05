@@ -45,6 +45,7 @@ const BlogCard = () => {
                 key={index}
                 heart={item.heart}
                 comment={item.comments}
+                blogLastUpdateTime={item.blogLastUpdateTime}
                 
                 /> 
             }) }
