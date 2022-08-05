@@ -11,10 +11,7 @@ const BlogForm = (props) => {
     setAuthorEmailInfo,
     setDisplay,
     setMsg,
-    heartCounter,
-    setHeartCounter,
     blogAllInfo,
-    clickedID,
   } = useContext(BlogContext);
   const {
     id,
@@ -23,7 +20,6 @@ const BlogForm = (props) => {
     newBlogImgUrl,
     newBlogContent,
     newBlogCreateTime,
-    heart,
   } = props;
   const navigate = useNavigate();
 

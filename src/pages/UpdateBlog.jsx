@@ -1,17 +1,14 @@
 import { ref, update } from "firebase/database";
-import { useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../contexts/AuthContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { BlogContext } from "../contexts/BlogContext";
 import { db } from "../helpers/firebase";
 
 const UpdateBlog = () => {
   const { blogAllInfo, newBlogTitle, setNewBlogTitle, newBlogImgUrl, setNewBlogImgUrl, newBlogContent, setNewBlogContent, clickedID, setAuthorEmailInfo, setMsg, setDisplay } = useContext(BlogContext);
 
-  const { currentUser } = useContext(AuthContext);
   // console.log(currentUser);
   const navigate = useNavigate();
-  const location = useLocation();
   // console.log(clickedID);
 
   const year = new Date().getFullYear().toString();

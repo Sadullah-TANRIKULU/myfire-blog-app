@@ -1,8 +1,5 @@
 import { onValue, ref } from "firebase/database";
-import { useContext } from "react";
 import { useEffect, useState } from "react";
-import { AuthContext } from "../contexts/AuthContext";
-import { BlogContext } from "../contexts/BlogContext";
 import { db } from "../helpers/firebase";
 import BlogForm from "./BlogForm";
 
@@ -10,11 +7,7 @@ const BlogCard = () => {
 
     const [blogAllInfo, setBlogAllInfo] = useState([]);
     // const { blogAllInfo, setBlogAllInfo } = useContext(BlogContext);
-    const currentUser = useContext(AuthContext);
     
-
-
-
 
     useEffect(() => {
         try {

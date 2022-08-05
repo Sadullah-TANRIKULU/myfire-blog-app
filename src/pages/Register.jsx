@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import google from "../assets/google.png";
 import { BlogContext } from "../contexts/BlogContext";
 import { createUser, signUpProvider } from "../helpers/firebase";

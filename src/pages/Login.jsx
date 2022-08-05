@@ -1,14 +1,12 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import google from "../assets/google.png";
-import { AuthContext } from "../contexts/AuthContext";
 import { BlogContext } from "../contexts/BlogContext";
 import { forgotPassword, signIn, signUpProvider } from "../helpers/firebase";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { currentUser } = useContext(AuthContext);
   const { setMsg, setDisplay } = useContext(BlogContext);
   const navigate = useNavigate();
 

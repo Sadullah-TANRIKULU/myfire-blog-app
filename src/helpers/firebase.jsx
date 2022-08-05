@@ -13,8 +13,7 @@ import {
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getDatabase } from "firebase/database";
-import { useContext } from "react";
-import { BlogContext } from "../contexts/BlogContext";
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -46,7 +45,7 @@ export const createUser = async (email, password, navigate, displayName) => {
     // await updateProfile(auth.currentUser, {
     //   displayName: displayName,
     // });
-    console.log(userCredential);
+    // console.log(userCredential);
     // navigate('/');
   } catch (error) {
     console.error(error.message);
@@ -94,7 +93,7 @@ export const signUpProvider = (navigate) => {
 
   signInWithPopup(auth, provider)
   .then((result) => {
-    console.log(result);
+    // console.log(result);
     navigate('/');
 
   })
@@ -105,13 +104,13 @@ export const signUpProvider = (navigate) => {
 
 };
 
-
 export const forgotPassword = (email) => {
   //? Email yoluyla şifre sıfırlama için kullanılan firebase metodu
   sendPasswordResetEmail(auth, email)
     .then(() => {
       // Password reset email sent!
       // alert("Please check your mail box!");
+
       console.log("Please check your mail box!");
     })
     .catch((err) => {

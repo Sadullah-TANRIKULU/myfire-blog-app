@@ -1,7 +1,7 @@
-import { onValue, ref, remove, set, update } from "firebase/database";
+import { ref, remove, update } from "firebase/database";
 import { useContext } from "react";
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { BlogContext } from "../contexts/BlogContext";
 import { AuthContext } from "../contexts/AuthContext";
 import { db } from "../helpers/firebase";
@@ -10,7 +10,6 @@ const Details = () => {
   const [commentInput, setCommentInput] = useState("");
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   const { currentUser } = useContext(AuthContext);
   const {
@@ -22,13 +21,9 @@ const Details = () => {
     clickedID,
     authorEmailInfo,
     setAuthorEmailInfo,
-    heartCounter,
-    setHeartCounter,
     setMsg,
     setDisplay,
   } = useContext(BlogContext);
-  // console.log(location.state.id);
-  // console.log(location.state.authorEmail);
   // console.log(currentUser.email);
 
   const handleDeleteBlog = (item) => {
@@ -49,9 +44,6 @@ const Details = () => {
     navigate("/updateblog");
   };
 
-  // totalHeart: (item.heart.totalHeart + 1),
-  // liker: [...item.heart.liker, currentUser.email],
-  //  && !(item.heart.liker.includes(currentUser.email))
   //icons
   const handleHeartClick = (item) => {
     if (
