@@ -35,10 +35,11 @@ const Register = () => {
                 Welcome, I'm so glad you're here! You're now part of a growing
                 community of developers and fans who create, collaborate and
                 connect with each other all over the world via{" "}
-                <h1 className="h-full text-center text-2xl tracking-tighter cursor-pointer ">
+                <br />
+                <span className="block h-full text-center text-2xl tracking-tighter ">
                   <span className="text-lime-600">&lt;David Moses</span>
                   Blog/&gt;
-                </h1>
+                </span>
               </p>
             </div>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

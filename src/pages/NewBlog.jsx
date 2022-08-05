@@ -44,7 +44,7 @@ const NewBlog = () => {
       },
       heart: {
         totalHeart: 0,
-        liker: [''],
+        liker: [' '],
       },
 
     });

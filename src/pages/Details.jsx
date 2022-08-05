@@ -144,7 +144,7 @@ const Details = () => {
                         xmlns="http://www.w3.org/2000/svg"
                         className={
                           ((item.comments.visitorComment).length)
-                            ? "fill-teal-500 h-5 w-5 "
+                            ? "fill-emerald-500 h-5 w-5 "
                             : "fill-black h-5 w-5 "
                         }
                         viewBox="0 0 20 20"
@@ -191,7 +191,7 @@ const Details = () => {
                   </p>
                 </form>
                 <div className="blockquote text-start ">
-                  {item.comments.visitorComment.map((eachComment, index) => {
+                  {item.comments.visitorComment?.map((eachComment, index) => {
                     return (
                       <blockquote key={index} className="odd:bg-emerald-100 m-4">
                         {eachComment}
