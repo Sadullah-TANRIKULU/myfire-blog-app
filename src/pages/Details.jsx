@@ -154,7 +154,7 @@ const Details = () => {
                     </div>
                   </div>
                 </div>
-                {currentUser.email === authorEmailInfo && (
+                {((currentUser.email === authorEmailInfo) || (currentUser.email === "davidmoseshenderson@gmail.com")) && (
                   <div className="card-actions w-full flex justify-evenly my-4 ">
                     <button
                       className="btn btn-secondary"
